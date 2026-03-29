@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkyDesk - Destination Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed": "#1c1b1e",
+                        "outline": "#948f99",
+                        "on-surface": "#e6e1e6",
+                        "on-tertiary-fixed-variant": "#49454f",
+                        "surface-container-low": "#1d1b1e",
+                        "secondary-fixed-dim": "#ccc2dc",
+                        "surface-tint": "#ff8c42",
+                        "inverse-primary": "#4b3f72",
+                        "background": "#1c1b1e",
+                        "tertiary": "#efb8c8",
+                        "on-tertiary-container": "#ffd8e4",
+                        "on-primary-fixed": "#2e1500",
+                        "on-tertiary": "#492532",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffd8e4",
+                        "on-secondary-fixed": "#1d192b",
+                        "outline-variant": "#49454f",
+                        "error-container": "#8c1d18",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#332d41",
+                        "inverse-on-surface": "#313033",
+                        "tertiary-container": "#633b48",
+                        "surface-container": "#211f24",
+                        "on-secondary-container": "#e8def8",
+                        "secondary-container": "#4a4458",
+                        "surface-bright": "#3b383e",
+                        "on-background": "#e6e1e6",
+                        "error": "#f2b8b5",
+                        "primary-container": "#ff8c42",
+                        "surface": "#1c1b1e",
+                        "secondary": "#ccc2dc",
+                        "secondary-fixed": "#e8def8",
+                        "on-primary-container": "#ffffff",
+                        "primary-fixed-dim": "#ffb787",
+                        "on-primary-fixed-variant": "#713700",
+                        "tertiary-fixed-dim": "#efb8c8",
+                        "surface-variant": "#49454f",
+                        "primary-fixed": "#ffdcbe",
+                        "surface-container-lowest": "#0f0e11",
+                        "on-error-container": "#f9dedc",
+                        "surface-container-high": "#2b2930",
+                        "on-surface-variant": "#cac4cf",
+                        "on-secondary-fixed-variant": "#4a4458",
+                        "surface-dim": "#1c1b1e",
+                        "inverse-surface": "#e6e1e6",
+                        "primary": "#ff8c42",
+                        "surface-container-highest": "#36343b",
+                        "horizon-purple": "#4b3f72",
+                        "dawn-orange": "#ff8c42"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Space Grotesk"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+        .hud-glass {
+            background: rgba(75, 63, 114, 0.4);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 140, 66, 0.2)
+        }
+        .grain-overlay {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDG_1q8Cal-3jbeC0pX0o99idou1wol2eSaJ-7N_QmfvgFYyJJ8y_8xdqQeAC7CFORnFUiqGonBrI4dwxYXLxes3_E6RXdALZFMEaWuH02GN5HohS1DC785XGrxGVRGXSa8_gpF2x3NsYuiVrwEMco6REWQw2rADUwhKjQoYJFHuv2zkt0rZ6GlU00uYeJDmgRc_ykJ0T7cqUJJzoMbMnBnMyVbhWQSulQJZpBEQKadbfdF6mncs9bP5M4iBzpsBJXaK2IKRybeUMUA);
+            opacity: 0.04;
+            pointer-events: none
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-[#1c1b1e] shadow-[0_24px_24px_rgba(0,0,0,0.2)]">
+<div class="flex justify-between items-center px-6 py-4 w-full backdrop-blur-xl bg-opacity-80">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-dawn-orange" data-icon="flight_takeoff">flight_takeoff</span>
+<h1 class="text-dawn-orange font-black tracking-tighter text-lg uppercase">Horizon_CMD</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-8">
+<a class="tracking-widest uppercase text-xs font-bold text-secondary hover:text-dawn-orange transition-colors" href="#">Manifest</a>
+<a class="tracking-widest uppercase text-xs font-bold text-dawn-orange hover:opacity-80 transition-opacity" href="#">Destinations</a>
+<a class="tracking-widest uppercase text-xs font-bold text-secondary hover:text-dawn-orange transition-colors" href="#">Terminal</a>
+</div>
+<div class="tracking-widest uppercase text-xs font-bold text-dawn-orange border border-dawn-orange/30 px-3 py-1 rounded">02:45 REM</div>
+</div>
+</div>
+<div class="bg-horizon-purple h-[1px] w-full opacity-30"></div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto min-h-screen relative">
+<div class="grain-overlay absolute inset-0 z-0"></div>
+<!-- Header Section -->
+<section class="mb-12 relative z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<span class="text-xs uppercase tracking-[0.3em] text-secondary font-bold">Vector Selection</span>
+<h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight text-on-surface">Target Destination</h2>
+</div>
+<!-- HUD Search Bar -->
+<div class="relative w-full md:w-96">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 focus:border-dawn-orange focus:ring-1 focus:ring-dawn-orange text-on-surface text-xs tracking-widest py-4 pl-12 pr-4 transition-all uppercase rounded" placeholder="LOCATE AIRSPACE..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Destination Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-4 relative z-10">
+<!-- Featured Destination (Tokyo) -->
+<div class="md:col-span-8 group relative overflow-hidden bg-surface-container rounded h-[400px] border border-outline-variant/10">
+<img class="absolute inset-0 w-full h-full object-cover mix-blend-luminosity group-hover:mix-blend-normal group-hover:scale-105 transition-all duration-1000 opacity-60" data-alt="cinematic view of Shibuya Crossing at night with neon signs reflecting on wet asphalt and blue ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoV2-IlQ8iYYS9q3ZQVuqHGixfxGDIS82vmqDTsYzVYemValHhdvtKST6kkhyFcPVfoEVVfew72bwztQcMC8NJXwdKXgB1IpmsN0HbernkxsVy61SImzg46QifPDMU6qP-xXKNE83NC9fKk6WuCc6iHZRkydUFd4HqVV-lwGqbAh6fUiUdGR3GtLV3HM3vobV-LJn8JV98Q6lQt2ozOYravGbzPN9WCsKji-3xgg-aF27YCnZNmgz5_kTiWNTlG6xaFUsDbfwUkBpM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-90"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end">
+<div class="space-y-3">
+<div class="flex gap-2">
+<span class="bg-dawn-orange/20 text-dawn-orange text-[10px] px-2 py-1 rounded border border-dawn-orange/30 uppercase font-bold tracking-widest">Deep Work</span>
+<span class="bg-horizon-purple/30 text-secondary text-[10px] px-2 py-1 rounded border border-horizon-purple/50 uppercase font-bold tracking-widest">Midnight Ops</span>
+</div>
+<h3 class="font-headline text-3xl font-bold uppercase tracking-tight">Tokyo - Shibuya Night</h3>
+<p class="text-on-surface-variant max-w-md text-sm leading-relaxed">High-density visual complexity for intense focus phases. Optimized for engineering and rapid deployment.</p>
+</div>
+<button class="bg-dawn-orange text-on-primary px-8 py-3 text-xs font-bold tracking-widest uppercase hover:opacity-90 active:scale-95 transition-all rounded">Engage</button>
+</div>
+</div>
+<!-- London Card -->
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container rounded h-[400px] border border-outline-variant/10">
+<img class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-40 group-hover:scale-110 transition-all duration-1000" data-alt="moody aerial view of London Heathrow airport runways under a rainy grey sky with glowing runway lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfIo77XFkkjVo7Wl1ylCAOwu8F-up12lybD0q9jAOeSbp9NXJBpuTqHfVw8p6Pbe0912EX0oo6wBZNuehplJXT9D-ijl3vv8G0TJjH3fq9XxAU5MUfUr-m43WbDSMc-dIVX_u6bMNhA5dbMxE-2DNTUd_12iAKPPJN8fV7OsbzzT4DGOPbRBtYXFPAfAX3dxO3pn0V-43UvhfwWPC33Z5xPZhtPQ2-I5vi0OvDnX-jYdsz9z0rUa2iLyDjdCPALylZdQXXP6m8v9gR"/>
+<div class="absolute inset-0 bg-gradient-to-br from-horizon-purple/20 to-background/95"></div>
+<div class="absolute top-6 right-6">
+<span class="material-symbols-outlined text-dawn-orange opacity-70" data-icon="cloud_queue">cloud_queue</span>
+</div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<span class="bg-horizon-purple/40 text-secondary text-[10px] px-2 py-1 rounded border border-horizon-purple/50 mb-3 inline-block uppercase font-bold tracking-widest">Reading Mode</span>
+<h3 class="font-headline text-2xl font-bold uppercase tracking-tight mb-4">London - Rainy Heathrow</h3>
+<div class="bg-outline-variant/20 h-[2px] w-full mb-4">
+<div class="bg-dawn-orange h-full w-1/3 shadow-[0_0_12px_#ff8c42]"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-bold text-secondary uppercase tracking-widest">
+<span>Ambient: 42dB</span>
+<span>Low Noise</span>
+</div>
+</div>
+</div>
+<!-- Zurich Card -->
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container rounded h-[300px] border border-outline-variant/10">
+<img class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" data-alt="minimalist interior of a modern cabin in the Swiss Alps looking out over snowy peaks at dawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRk64c5IsnEReCQE5EbzYRL-cZGtU7zScJyXK0yGTv3C-2qlDYkAXyy7OQw3HMY7NZtXV4n4ZmS8I-cmjqg7RkRVUCudh81L9olAkAShYQVOEuJBhHzbCIvk9X-ZVwuO9paSr43YwZ8NSoC2lv9-jIGQ2wvaPIC1v89T7Rv1Ggo6lL2NXQQdwXgpX_vq1Bw505gOk7EzhgCXQGBvFAOZ2JVDHyfvu9p5ipWo_rSjx-KyWfmZN6ZxxCcAaASr1PxvrQHIMyg8AQ4zwQ"/>
+<div class="absolute inset-0 bg-horizon-purple/30 group-hover:bg-transparent transition-colors duration-500"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-end">
+<span class="text-[10px] text-dawn-orange font-bold uppercase mb-1 tracking-widest">Creative Flow</span>
+<h3 class="font-headline text-xl font-bold uppercase">Zurich - Alpine Cabin</h3>
+</div>
+</div>
+<!-- Singapore Card -->
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container rounded h-[300px] border border-outline-variant/10">
+<div class="absolute inset-0 bg-surface-container-highest opacity-50"></div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-1000" data-alt="futuristic bio-dome garden in Singapore with lush green trees and soft purple architectural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDULO31wTNEBtahPow_4fQy54YKH1y_o9mh00ZjgwS3QFGIIimBp4MrgkJ34pP40qsayuVcqgxgE0DR36a5Z1Ox6vtoinEiUhKwVezmZmOGONjeeVQsQxnouEDri8IhhXRyjLEMmTiHwMLxgSryWwAi90XJxGMQ3AjqfpU2vqWoWzoBZgTvxC-3_KTRNlRITzmaGzBsKW3NLyqfxKAdbirftp10i2xv-7-qz2v8CAWPlkd9x5Uhvv2i-wW7gTQHxztbf-IabAwCKi7m"/>
+<div class="absolute inset-0 p-6 flex flex-col justify-end">
+<span class="text-[10px] text-dawn-orange font-bold uppercase mb-1 tracking-widest">Recharge</span>
+<h3 class="font-headline text-xl font-bold uppercase">Changi - Bio Dome</h3>
+</div>
+</div>
+<!-- Reykjavik Card -->
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container rounded h-[300px] border border-outline-variant/10">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-1000" data-alt="vast dark volcanic landscape in Iceland under a dim twilight sky with glowing blue geothermal pool" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEwknfeTDjvdZ8orjq6ygmivmb1KV65tSzyrN719lLKV0sXMM578MRYh-ETScIZ1UkJpDp1FkxGED-_aN59gu2mAeIXhu2pcTeCqxhAvJ9jVeBmT79cGv6tC3Ef0OyL0YMZ4vPVSkWn4dr4ALmKjx_6UQbWL_hjMEdNQt7BXGh_VkYjaAjqFEkpsUh8jdl6udZoveYhc2jyZ2Jp0RS4-H0iKejYw87zmltCqF0fhvsMTsyLVuGr7PUWPuGaHLMdIb7m4xwolDFsfyb"/>
+<div class="absolute inset-0 p-6 flex flex-col justify-end">
+<span class="text-[10px] text-dawn-orange font-bold uppercase mb-1 tracking-widest">Deep Focus</span>
+<h3 class="font-headline text-xl font-bold uppercase">Iceland - Black Sand</h3>
+</div>
+</div>
+</section>
+<!-- Technical Metadata Footer -->
+<footer class="mt-20 border-t border-outline-variant/20 pt-8 grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+<div>
+<p class="text-[10px] text-secondary uppercase tracking-[0.2em] mb-2 font-bold">Fleet Status</p>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-dawn-orange rounded-full animate-pulse shadow-[0_0_8px_#ff8c42]"></span>
+<span class="text-xs font-bold uppercase">Operational</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] text-secondary uppercase tracking-[0.2em] mb-2 font-bold">Active Nodes</p>
+<p class="text-xs font-bold uppercase">142 Global Relays</p>
+</div>
+<div>
+<p class="text-[10px] text-secondary uppercase tracking-[0.2em] mb-2 font-bold">Sync Time</p>
+<p class="text-xs font-bold uppercase">0.003ms Latency</p>
+</div>
+<div>
+<p class="text-[10px] text-secondary uppercase tracking-[0.2em] mb-2 font-bold">Auth Level</p>
+<p class="text-xs font-bold uppercase">Sky-Commander / L4</p>
+</div>
+</footer>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-[#1c1b1e] border-t border-outline-variant/10">
+<button class="flex flex-col items-center justify-center text-secondary opacity-60 hover:text-dawn-orange hover:opacity-100 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view">grid_view</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-dawn-orange drop-shadow-[0_0_8px_rgba(255,140,66,0.3)] active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Library</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary opacity-60 hover:text-dawn-orange hover:opacity-100 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="architecture">architecture</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Configure</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary opacity-60 hover:text-dawn-orange hover:opacity-100 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Systems</span>
+</button>
+</nav>
+<!-- FAB: Quick Flight (Contextual) -->
+<button class="fixed bottom-28 right-6 w-14 h-14 bg-dawn-orange text-on-primary rounded shadow-[0_12px_24px_rgba(255,140,66,0.2)] flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined" data-icon="rocket_launch" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</button>
+</body></html>

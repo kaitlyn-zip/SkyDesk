@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkyDesk | Horizon Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#FF8C42", // Dawn Orange
+              "on-primary": "#2D1B00",
+              "background": "#1A1625", // Twilight Purple Dark
+              "surface": "#241F33", // Twilight Purple Surface
+              "on-surface": "#E5E1E6",
+              "secondary": "#9D8BB5", // Muted Twilight
+              "on-secondary": "#2D243D",
+              "tertiary": "#4B3F72", // Core Twilight Purple
+              "outline": "#7A7485",
+              "outline-variant": "#49454F",
+              "error": "#FFB4AB",
+              "error-container": "#93000a",
+              "surface-container": "#2D273D",
+              "surface-container-high": "#38314B",
+              "surface-container-low": "#1F1B2C",
+              "surface-container-lowest": "#14111D",
+              "surface-bright": "#443D57"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.125rem", 
+              "lg": "0.25rem", 
+              "xl": "0.5rem", 
+              "full": "0.75rem"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            backdrop-filter: blur(20px);
+            background: rgba(75, 63, 114, 0.4);
+            border-top: 1px solid rgba(255, 140, 66, 0.15);
+        }
+        .horizon-track {
+            height: 2px;
+            background: rgba(157, 139, 181, 0.2);
+        }
+        .horizon-fill {
+            height: 2px;
+            background: #FF8C42;
+            box-shadow: 0 0 8px #FF8C42;
+        }
+        .technical-bg {
+            background-image: radial-gradient(circle at 2px 2px, rgba(157, 139, 181, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 technical-bg">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full backdrop-blur-xl bg-opacity-80 bg-[#1A1625]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#FF8C42]" data-icon="flight_takeoff">flight_takeoff</span>
+<h1 class="text-[#FF8C42] font-black tracking-tighter text-lg">SKYD_042</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end">
+<span class="font-['Space_Grotesk'] tracking-widest uppercase text-[10px] font-bold text-secondary opacity-60">COORDINATES</span>
+<span class="font-['Space_Grotesk'] text-xs text-[#FF8C42] font-bold">34.0522° N, 118.2437° W</span>
+</div>
+<div class="bg-outline-variant h-8 w-[1px] opacity-20 mx-2"></div>
+<button class="font-['Space_Grotesk'] tracking-widest uppercase text-xs font-bold text-[#FF8C42] active:scale-95 duration-150 transition-opacity hover:opacity-80">
+                    02:45 REM
+                </button>
+</div>
+</div>
+<div class="bg-outline-variant h-[1px] w-full opacity-20"></div>
+</header>
+<main class="pt-24 pb-32 px-6 min-h-screen flex flex-col max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-8">
+<!-- Flight Path Visualizer (Left Column/Main) -->
+<section class="lg:col-span-8 space-y-8">
+<!-- Central HUD Visualization -->
+<div class="relative aspect-square md:aspect-video rounded-xl overflow-hidden glass-panel flex items-center justify-center p-8 group">
+<!-- Flight Path Map Emulation -->
+<div class="absolute inset-0 opacity-30">
+<img alt="Global Flight Path" class="w-full h-full object-cover mix-blend-screen" data-alt="abstract minimalist world map with glowing points of light on a deep dark purple background representing flight paths" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjFu97oeIWKpRENx_KLxihNmGh4kUwMq9WvpXkV2rQhmzzAs8zXOPaz80Y4lGGhjVsASREGxqoxNu17KUE3AAl5ToHjZAlQPFqTtjZtKVwfiuIVUiqE4kDwuYoWeDAb5UqAQoDv6I9_lbfQqyQyrGAq3kAQFmlz8lllNu3wVVz-pjwnYK2pAZAvrUpdBjMB0KBCWB9shIjHQfo_SrTU486MPUd6Y04-alc3Hs2SCn75gbWtkfRWwpzy9c-0ePuiHFAZO8F21CPxPUO"/>
+</div>
+<!-- Globe / Flight Path Overlay -->
+<div class="relative z-10 w-full h-full flex items-center justify-center">
+<!-- Circular Flight Path HUD -->
+<div class="relative w-64 h-64 md:w-96 md:h-96 rounded-full border border-secondary/10 flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border border-primary/20 scale-110"></div>
+<div class="absolute inset-0 rounded-full border border-secondary/5 scale-125"></div>
+<!-- Flight Curve -->
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 100 100">
+<!-- Ghost Plane Path -->
+<path d="M 20,50 A 30,30 0 0,1 80,50" fill="none" stroke="rgba(157, 139, 181, 0.15)" stroke-dasharray="2 2" stroke-width="0.5"></path>
+<!-- Active Path -->
+<path d="M 20,50 A 30,30 0 0,1 55,25" fill="none" stroke="#FF8C42" stroke-linecap="round" stroke-width="1.5"></path>
+<!-- Main Aircraft Marker -->
+<circle cx="55" cy="25" fill="#FF8C42" r="2"></circle>
+<!-- Anonymous Co-flyers (Dots) -->
+<circle class="animate-pulse" cx="30" cy="30" fill="#9D8BB5" r="0.8"></circle>
+<circle cx="70" cy="45" fill="#9D8BB5" r="0.8"></circle>
+<circle class="opacity-40" cx="45" cy="75" fill="#9D8BB5" r="0.8"></circle>
+</svg>
+<!-- Central Countdown Timer -->
+<div class="absolute flex flex-col items-center">
+<span class="font-label text-[10px] tracking-[0.2em] text-secondary/60 uppercase">TIME TO ARRIVAL</span>
+<div class="font-headline text-5xl md:text-7xl font-light text-on-surface tracking-tighter">
+                                01<span class="text-primary">:</span>45<span class="text-secondary/30 text-2xl md:text-4xl">m</span>
+</div>
+<div class="mt-4 px-3 py-1 bg-primary/10 rounded-sm border border-primary/20">
+<span class="font-label text-[10px] text-primary font-bold">FLIGHT ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- HUD Corners Labels -->
+<div class="absolute top-6 left-6 flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase">AUTO-PILOT</span>
+<span class="font-headline text-sm font-bold text-on-surface">ENGAGED</span>
+</div>
+<div class="absolute bottom-6 right-6 flex flex-col items-end">
+<span class="font-label text-[10px] text-secondary/40 uppercase">GHOST_PLANE_DELTA</span>
+<span class="font-headline text-sm font-bold text-secondary">-04:12s</span>
+</div>
+</div>
+<!-- Metrics Row -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="surface-container p-4 rounded-lg flex flex-col border border-outline-variant/10">
+<span class="font-label text-[10px] text-secondary/60 uppercase mb-1">ALTITUDE</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-2xl font-bold text-on-surface">32,450</span>
+<span class="font-label text-xs text-secondary/40">FT</span>
+</div>
+<div class="mt-4 horizon-track rounded-full">
+<div class="horizon-fill rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<div class="surface-container p-4 rounded-lg flex flex-col border border-outline-variant/10">
+<span class="font-label text-[10px] text-secondary/60 uppercase mb-1">AIRSPEED</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-2xl font-bold text-on-surface">542</span>
+<span class="font-label text-xs text-secondary/40">KTS</span>
+</div>
+<div class="mt-4 horizon-track rounded-full">
+<div class="horizon-fill rounded-full" style="width: 62%"></div>
+</div>
+</div>
+<div class="surface-container p-4 rounded-lg flex flex-col border border-outline-variant/10">
+<span class="font-label text-[10px] text-secondary/60 uppercase mb-1">FUEL LEVEL</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-2xl font-bold text-on-surface">92</span>
+<span class="font-label text-xs text-secondary/40">%</span>
+</div>
+<div class="mt-4 horizon-track rounded-full">
+<div class="horizon-fill rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="surface-container p-4 rounded-lg flex flex-col border border-outline-variant/10">
+<span class="font-label text-[10px] text-secondary/60 uppercase mb-1">CO-FLYERS</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-2xl font-bold text-on-surface">1,204</span>
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="groups">groups</span>
+</div>
+<div class="mt-4 flex gap-1 h-0.5 w-full">
+<div class="flex-1 bg-primary/40"></div>
+<div class="flex-1 bg-primary/40"></div>
+<div class="flex-1 bg-primary/20"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Sidebar (Controls) -->
+<aside class="lg:col-span-4 mt-8 lg:mt-0 space-y-6">
+<!-- Ambient Engine Controls -->
+<div class="surface-container p-6 rounded-lg space-y-6">
+<div class="flex justify-between items-center">
+<h3 class="font-headline text-sm font-bold uppercase tracking-widest text-secondary">SOUNDSCAPE</h3>
+<span class="material-symbols-outlined text-secondary opacity-40" data-icon="graphic_eq">graphic_eq</span>
+</div>
+<div class="space-y-4">
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label text-[10px] text-secondary/80">WHITE NOISE (ENGINE)</span>
+<span class="font-label text-[10px] text-primary">60%</span>
+</div>
+<input class="w-full h-1 bg-secondary/10 rounded-full appearance-none accent-primary cursor-pointer" type="range" value="60"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label text-[10px] text-secondary/80">CABIN PRESSURE</span>
+<span class="font-label text-[10px] text-secondary">25%</span>
+</div>
+<input class="w-full h-1 bg-secondary/10 rounded-full appearance-none accent-secondary/40 cursor-pointer" type="range" value="25"/>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label text-[10px] text-secondary/80">STRATOSPHERIC WINDS</span>
+<span class="font-label text-[10px] text-secondary">40%</span>
+</div>
+<input class="w-full h-1 bg-secondary/10 rounded-full appearance-none accent-secondary/40 cursor-pointer" type="range" value="40"/>
+</div>
+</div>
+<div class="pt-4 border-t border-secondary/10 flex gap-2">
+<button class="flex-1 py-2 bg-surface-container-high rounded text-[10px] font-label font-bold text-secondary uppercase border border-outline-variant/20 hover:border-primary/40 transition-colors">
+                        MUTE ALL
+                    </button>
+<button class="flex-1 py-2 bg-primary/10 rounded text-[10px] font-label font-bold text-primary uppercase border border-primary/20 hover:bg-primary/20 transition-colors">
+                        HI-FIDELITY
+                    </button>
+</div>
+</div>
+<!-- Flight Data / Ghost Plane Details -->
+<div class="surface-container p-6 rounded-lg space-y-4">
+<h3 class="font-headline text-sm font-bold uppercase tracking-widest text-secondary">FLIGHT LOG</h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-[11px] font-body">
+<span class="text-secondary/60">TARGET DURATION</span>
+<span class="text-on-surface font-headline font-medium">02:30:00</span>
+</div>
+<div class="flex justify-between items-center text-[11px] font-body">
+<span class="text-secondary/60">GHOST PLANE RECORD</span>
+<span class="text-on-surface font-headline font-medium">02:15:42</span>
+</div>
+<div class="flex justify-between items-center text-[11px] font-body">
+<span class="text-secondary/60">ESTIMATED EFFICIENCY</span>
+<span class="text-primary font-headline font-medium">88%</span>
+</div>
+</div>
+<div class="mt-6 flex flex-col gap-3">
+<!-- Emergency Landing -->
+<button class="w-full group flex items-center justify-between p-4 bg-error-container/10 border border-error/10 rounded hover:bg-error-container/20 transition-all active:scale-[0.98]">
+<div class="flex flex-col items-start">
+<span class="font-label text-[10px] text-error/60 uppercase">EMERGENCY LANDING</span>
+<span class="font-headline text-xs font-bold text-error">STOP SESSION</span>
+</div>
+<span class="material-symbols-outlined text-error" data-icon="emergency_home">emergency_home</span>
+</button>
+</div>
+</div>
+<!-- Technical Detail Card -->
+<div class="surface-container-low p-4 rounded-lg border border-primary/10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center bg-primary/5">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<p class="text-[10px] font-label text-secondary uppercase">CURRENT ATMOSPHERE</p>
+<p class="text-xs text-on-surface/80">Deep focus detected. No interruptions for 42 minutes.</p>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-[#1A1625] border-t border-secondary/10">
+<!-- Dashboard (Active) -->
+<button class="flex flex-col items-center justify-center text-[#FF8C42] scale-110 drop-shadow-[0_0_8px_rgba(255,140,66,0.4)] active:scale-90 duration-200 ease-in-out transition-all">
+<span class="material-symbols-outlined" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.05em] mt-1">Status</span>
+</button>
+<!-- Logbook -->
+<button class="flex flex-col items-center justify-center text-secondary opacity-50 active:scale-90 duration-200 ease-in-out hover:text-[#FF8C42] hover:opacity-100 transition-all">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.05em] mt-1">Logs</span>
+</button>
+<!-- Route Plan -->
+<button class="flex flex-col items-center justify-center text-secondary opacity-50 active:scale-90 duration-200 ease-in-out hover:text-[#FF8C42] hover:opacity-100 transition-all">
+<span class="material-symbols-outlined" data-icon="architecture">architecture</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.05em] mt-1">Route</span>
+</button>
+<!-- Settings -->
+<button class="flex flex-col items-center justify-center text-secondary opacity-50 active:scale-90 duration-200 ease-in-out hover:text-[#FF8C42] hover:opacity-100 transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.05em] mt-1">System</span>
+</button>
+</nav>
+<!-- Background Decoration -->
+<div class="fixed top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+<div class="fixed bottom-0 left-0 w-[300px] h-[300px] bg-tertiary/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+</body></html>

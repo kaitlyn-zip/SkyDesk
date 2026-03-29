@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF8C42", // Dawn Orange accent
+                        "on-primary": "#1A1423",
+                        "background": "#1A1423", // Deep Twilight base
+                        "surface": "#241E30",
+                        "surface-container": "#2D263D",
+                        "surface-container-low": "#272135",
+                        "surface-container-lowest": "#140F1C",
+                        "surface-container-high": "#382F4A",
+                        "surface-container-highest": "#4B3F72", // Twilight Purple
+                        "on-surface": "#E5E1E6",
+                        "on-surface-variant": "#C9C5D0",
+                        "secondary": "#A89EB7",
+                        "secondary-container": "#4B3F72",
+                        "on-secondary-container": "#E9DFFC",
+                        "outline": "#948F99",
+                        "outline-variant": "#49454F",
+                        "primary-container": "#633B00",
+                        "on-primary-container": "#FFDDB3"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hud-glass {
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(201, 197, 208, 0.1);
+        }
+        .safety-glow {
+            box-shadow: 0 0 15px rgba(255, 140, 66, 0.2);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopAppBar Navigation -->
+<header class="fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full backdrop-blur-xl bg-background/80">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="flight_takeoff">flight_takeoff</span>
+<span class="text-primary font-black tracking-tighter text-lg">SKYD_042</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="text-primary font-['Space_Grotesk'] tracking-widest uppercase text-xs font-bold hover:opacity-80 transition-opacity" href="#">Mission</a>
+<a class="text-secondary font-['Space_Grotesk'] tracking-widest uppercase text-xs font-bold hover:opacity-80 transition-opacity" href="#">Logbook</a>
+<a class="text-secondary font-['Space_Grotesk'] tracking-widest uppercase text-xs font-bold hover:opacity-80 transition-opacity" href="#">Hangar</a>
+</div>
+<div class="font-['Space_Grotesk'] tracking-widest uppercase text-xs font-bold text-primary">
+                02:45 REM
+            </div>
+</div>
+<div class="bg-outline-variant h-[1px] w-full opacity-30"></div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-5xl mx-auto min-h-screen">
+<!-- Header Section -->
+<section class="mb-12">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 bg-primary animate-pulse"></span>
+<p class="font-label text-xs uppercase tracking-[0.2em] text-secondary">System Ready</p>
+</div>
+<h1 class="font-headline text-4xl md:text-6xl font-bold tracking-tight text-on-surface mb-2">Pre-Flight Planning</h1>
+<p class="text-on-surface-variant font-body max-w-xl">Configure your avionics and atmospheric parameters for the upcoming focus session.</p>
+</section>
+<!-- Configuration Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Flight Path Selection -->
+<div class="md:col-span-8 space-y-6">
+<div class="bg-surface-container rounded p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl text-on-surface" data-icon="map">map</span>
+</div>
+<label class="font-label text-[10px] uppercase tracking-[0.1em] text-secondary mb-4 block">Flight Destination</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<span class="font-label text-[10px] text-outline uppercase">Origin</span>
+<div class="bg-surface-container-lowest p-4 rounded border border-transparent focus-within:border-primary transition-all flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="location_on">location_on</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface font-headline w-full p-0" type="text" value="San Francisco (SFO)"/>
+</div>
+</div>
+<div class="space-y-2">
+<span class="font-label text-[10px] text-outline uppercase">Destination</span>
+<div class="bg-surface-container-lowest p-4 rounded border border-transparent focus-within:border-primary transition-all flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="flight_land">flight_land</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface font-headline w-full p-0" placeholder="Tokyo (HND)" type="text" value="Tokyo (HND)"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Soundscape Selection -->
+<div class="bg-surface-container rounded p-6">
+<label class="font-label text-[10px] uppercase tracking-[0.1em] text-secondary mb-4 block">Ambient Soundscape</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<button class="flex flex-col items-start p-4 bg-surface-container-highest border border-primary/40 rounded hover:bg-surface-container-highest/80 transition-all group">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="airplanemode_active" style="font-variation-settings: 'FILL' 1;">airplanemode_active</span>
+<span class="font-headline text-sm font-medium">747 Cabin</span>
+<span class="text-[10px] text-secondary/70 uppercase mt-1">White Noise</span>
+</button>
+<button class="flex flex-col items-start p-4 bg-surface-container-lowest border border-transparent rounded hover:border-outline-variant transition-all group">
+<span class="material-symbols-outlined text-secondary mb-3" data-icon="water_drop">water_drop</span>
+<span class="font-headline text-sm font-medium text-on-surface-variant">Gate Rain</span>
+<span class="text-[10px] text-outline uppercase mt-1">Rhythmic</span>
+</button>
+<button class="flex flex-col items-start p-4 bg-surface-container-lowest border border-transparent rounded hover:border-outline-variant transition-all group">
+<span class="material-symbols-outlined text-secondary mb-3" data-icon="cloud">cloud</span>
+<span class="font-headline text-sm font-medium text-on-surface-variant">Stratosphere</span>
+<span class="text-[10px] text-outline uppercase mt-1">Deep Drone</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Side Controls -->
+<div class="md:col-span-4 space-y-6">
+<!-- Duration Selector -->
+<div class="bg-surface-container rounded p-6">
+<label class="font-label text-[10px] uppercase tracking-[0.1em] text-secondary mb-4 block">Total Airtime</label>
+<div class="text-center py-4">
+<div class="font-headline text-5xl font-light tracking-tighter text-primary mb-2">2h 30m</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full relative">
+<div class="absolute top-0 left-0 h-full bg-primary w-2/3 shadow-[0_0_8px_rgba(255,140,66,0.4)]"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="font-label text-[10px] text-outline">0H</span>
+<span class="font-label text-[10px] text-outline">4H MAX</span>
+</div>
+</div>
+</div>
+<!-- Ghost Plane Toggle -->
+<div class="bg-surface-container rounded p-6 flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="ghost" style="font-variation-settings: 'FILL' 1;">temp_preferences_custom</span>
+<label class="font-headline text-sm font-medium">Ghost Plane</label>
+</div>
+<p class="text-[10px] text-outline uppercase">Race past performance</p>
+</div>
+<button class="w-12 h-6 bg-primary rounded-full relative transition-all">
+<span class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full"></span>
+</button>
+</div>
+<!-- Map Visualization Mini -->
+<div class="bg-surface-container-lowest rounded overflow-hidden aspect-square relative group">
+<img class="w-full h-full object-cover opacity-40 grayscale group-hover:scale-110 transition-transform duration-700" data-alt="stylized dark satellite map view showing flight path line from San Francisco to Tokyo across the Pacific" data-location="Pacific Ocean" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP4vm7Z7nnjXkqyzu63mXC1_1vrH6P-E_p-wXSngYFHWd-eZjwmHYImkKvbrxMr1rY2Fnqn-Fpxt8521RA1Mf-6AxNto-O9W7YbpEuM__uCoNF-nopBl_PrfmheEyCaBzZ6BaiLAN3ynDhfYmB6ky_JPD7vXpyZLoIH6cE6-HSZiLaQnLoKLraigvlwu5rPD2CtsyTOGbazQKCE_gZdbodnNV3P8r-pTaIxiuM0zSioQsCyaHo1R_QuCiMCd6mgsKk1JYsmGGYUPBO"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<div class="font-label text-[10px] text-primary uppercase mb-1">Estimated Route</div>
+<div class="font-headline text-xs font-bold text-on-surface">5,150 NM • ETOPS-180</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Take Off Action -->
+<div class="mt-12 flex flex-col items-center">
+<button class="w-full md:w-auto px-12 py-5 bg-gradient-to-br from-primary to-[#D86E2A] text-on-primary font-label font-black text-lg tracking-[0.2em] uppercase rounded-lg shadow-[0_0_30px_rgba(255,140,66,0.15)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-4">
+                Initialize Take Off
+                <span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</button>
+<p class="mt-4 font-label text-[10px] text-outline uppercase tracking-widest">Protocol SKY-D-042 Ready for Execution</p>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-background border-t border-surface-container-highest">
+<a class="flex flex-col items-center justify-center text-primary scale-110 drop-shadow-[0_0_8px_rgba(255,140,66,0.3)] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary opacity-50 hover:text-primary hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary opacity-50 hover:text-primary hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="architecture">architecture</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary opacity-50 hover:text-primary hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</a>
+</nav>
+<!-- Atmospheric Texture Background -->
+<div class="fixed inset-0 pointer-events-none z-[-1] opacity-20">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,_#4B3F72_0%,_transparent_60%)]"></div>
+<div class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,_#FF8C42_0%,_transparent_40%)] opacity-5"></div>
+</div>
+</body></html>

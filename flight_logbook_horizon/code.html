@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkyDesk - Logbook</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#1d1a22",
+              "outline": "#948f99",
+              "on-surface": "#e6e1e6",
+              "on-tertiary-fixed-variant": "#49454e",
+              "surface-container-low": "#1d1a22",
+              "secondary-fixed-dim": "#ccc2dc",
+              "surface-tint": "#d0bcff",
+              "inverse-primary": "#6750a4",
+              "background": "#120f17",
+              "tertiary": "#efb8c8",
+              "on-tertiary-container": "#ffd8e4",
+              "on-primary-fixed": "#21005d",
+              "on-tertiary": "#492532",
+              "on-primary": "#381e72",
+              "tertiary-fixed": "#ffd8e4",
+              "on-secondary-fixed": "#1d192b",
+              "outline-variant": "#49454f",
+              "error-container": "#8c1d18",
+              "on-error": "#601410",
+              "on-secondary": "#332d41",
+              "inverse-on-surface": "#313033",
+              "tertiary-container": "#633b48",
+              "surface-container": "#211f26",
+              "on-secondary-container": "#e8def8",
+              "secondary-container": "#4a4458",
+              "surface-bright": "#3b383e",
+              "on-background": "#e6e1e6",
+              "error": "#f2b8b5",
+              "primary-container": "#4f378b",
+              "surface": "#1c1b1f",
+              "secondary": "#ccc2dc",
+              "secondary-fixed": "#e8def8",
+              "on-primary-container": "#eaddff",
+              "primary-fixed-dim": "#d0bcff",
+              "on-primary-fixed-variant": "#4f378b",
+              "tertiary-fixed-dim": "#efb8c8",
+              "surface-variant": "#49454f",
+              "primary-fixed": "#eaddff",
+              "surface-container-lowest": "#0f0d13",
+              "on-error-container": "#f9dedc",
+              "surface-container-high": "#2b2930",
+              "on-surface-variant": "#cac4d0",
+              "on-secondary-fixed-variant": "#4a4458",
+              "surface-dim": "#141218",
+              "inverse-surface": "#e6e1e6",
+              "primary": "#FF8C42",
+              "surface-container-highest": "#36343b",
+              "twilight": "#4B3F72",
+              "dawn": "#FF8C42"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Space Grotesk"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-layering {
+            background: linear-gradient(180deg, rgba(75, 63, 114, 0) 0%, rgba(75, 63, 114, 1) 100%);
+        }
+        body {
+            background-color: #120f17;
+            color: #e6e1e6;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#120f17] dark:bg-[#120f17] backdrop-blur-xl bg-opacity-60 shadow-[0_24px_24px_rgba(18,15,23,0.06)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-dawn text-xl">flight_takeoff</span>
+<span class="text-dawn font-black tracking-tighter text-lg font-headline">SKYD_042</span>
+</div>
+<div class="flex items-center">
+<span class="text-dawn font-headline tracking-widest uppercase text-xs font-bold">02:45 REM</span>
+</div>
+</div>
+<div class="bg-twilight h-[1px] w-full opacity-20"></div>
+</header>
+<main class="pt-24 px-6 max-w-4xl mx-auto">
+<!-- Flight Log Header Section -->
+<section class="mb-10">
+<div class="flex items-end justify-between mb-2">
+<div>
+<span class="font-label text-xs uppercase tracking-[0.2em] text-secondary opacity-60 mb-1 block">Logbook Archive</span>
+<h1 class="font-headline text-4xl font-bold tracking-tight text-on-surface">Flight Log</h1>
+</div>
+<div class="text-right">
+<span class="font-label text-[10px] uppercase tracking-widest text-dawn block">Status: Verified</span>
+<span class="font-headline text-sm text-secondary">UTC 14:32:05</span>
+</div>
+</div>
+</section>
+<!-- Cumulative Airtime Summary (HUD Card) -->
+<section class="mb-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+<div class="bg-surface-container-high p-6 rounded-l-lg border-l-2 border-dawn">
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary mb-3 block">Cumulative Airtime</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-5xl font-black text-on-surface">145</span>
+<span class="font-headline text-xl text-dawn font-light uppercase">HRS</span>
+<span class="font-headline text-5xl font-black text-on-surface ml-2">12</span>
+<span class="font-headline text-xl text-dawn font-light uppercase">M</span>
+</div>
+</div>
+<div class="bg-surface-container p-6 border-x border-outline-variant/10">
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary mb-3 block">Missions Completed</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-5xl font-black text-on-surface">42</span>
+<span class="font-headline text-xl text-secondary font-light uppercase">FLTS</span>
+</div>
+</div>
+<div class="bg-surface-container-high p-6 rounded-r-lg">
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary mb-3 block">Average Velocity</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-5xl font-black text-on-surface">3.4</span>
+<span class="font-headline text-xl text-secondary font-light uppercase">H/SESS</span>
+</div>
+</div>
+</div>
+<!-- Technical Horizon Progress Bar -->
+<div class="mt-4 bg-surface-container-lowest h-1.5 w-full rounded-full overflow-hidden flex items-center px-1">
+<div class="h-0.5 bg-dawn w-3/4 rounded-full shadow-[0_0_8px_#FF8C42]"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="font-label text-[9px] uppercase tracking-tighter text-outline">Tier: Senior Captain</span>
+<span class="font-label text-[9px] uppercase tracking-tighter text-outline">75% to Next Rank</span>
+</div>
+</section>
+<!-- Recent Flights List -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-lg font-bold tracking-tight text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">history</span>
+                Recent Flights
+            </h3>
+<button class="text-secondary/60 hover:text-dawn transition-colors flex items-center gap-2">
+<span class="font-label text-[10px] uppercase tracking-widest">Filter By Type</span>
+<span class="material-symbols-outlined text-xs">tune</span>
+</button>
+</div>
+<div class="space-y-3">
+<!-- Flight Entry 1 -->
+<div class="bg-surface-container p-4 flex items-center justify-between group hover:bg-surface-container-high transition-all border-l border-transparent hover:border-dawn">
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Date</span>
+<span class="font-headline text-sm font-bold text-on-surface">OCT 24.23</span>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/10"></div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Duration</span>
+<span class="font-headline text-sm font-bold text-on-surface">04:12:00</span>
+</div>
+<div class="hidden md:flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Destination</span>
+<span class="font-headline text-sm font-bold text-on-surface uppercase tracking-tight">Project Aurora - Deep Work</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="px-2 py-0.5 rounded-sm bg-dawn/10 border border-dawn/20">
+<span class="font-label text-[9px] font-bold text-dawn uppercase tracking-widest">Landed Successfully</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-dawn transition-colors cursor-pointer">chevron_right</span>
+</div>
+</div>
+<!-- Flight Entry 2 -->
+<div class="bg-surface-container p-4 flex items-center justify-between group hover:bg-surface-container-high transition-all border-l border-transparent hover:border-dawn">
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Date</span>
+<span class="font-headline text-sm font-bold text-on-surface">OCT 22.23</span>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/10"></div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Duration</span>
+<span class="font-headline text-sm font-bold text-on-surface">01:45:12</span>
+</div>
+<div class="hidden md:flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Destination</span>
+<span class="font-headline text-sm font-bold text-on-surface uppercase tracking-tight">System Maintenance</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="px-2 py-0.5 rounded-sm bg-error/10 border border-error/20">
+<span class="font-label text-[9px] font-bold text-error uppercase tracking-widest">Aborted</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-dawn transition-colors cursor-pointer">chevron_right</span>
+</div>
+</div>
+<!-- Flight Entry 3 -->
+<div class="bg-surface-container p-4 flex items-center justify-between group hover:bg-surface-container-high transition-all border-l border-transparent hover:border-dawn">
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Date</span>
+<span class="font-headline text-sm font-bold text-on-surface">OCT 21.23</span>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/10"></div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Duration</span>
+<span class="font-headline text-sm font-bold text-on-surface">06:00:00</span>
+</div>
+<div class="hidden md:flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Destination</span>
+<span class="font-headline text-sm font-bold text-on-surface uppercase tracking-tight">Transatlantic Research Focus</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="px-2 py-0.5 rounded-sm bg-dawn/10 border border-dawn/20">
+<span class="font-label text-[9px] font-bold text-dawn uppercase tracking-widest">Landed Successfully</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-dawn transition-colors cursor-pointer">chevron_right</span>
+</div>
+</div>
+<!-- Flight Entry 4 -->
+<div class="bg-surface-container p-4 flex items-center justify-between group hover:bg-surface-container-high transition-all border-l border-transparent hover:border-dawn">
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Date</span>
+<span class="font-headline text-sm font-bold text-on-surface">OCT 18.23</span>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/10"></div>
+<div class="flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Duration</span>
+<span class="font-headline text-sm font-bold text-on-surface">02:22:05</span>
+</div>
+<div class="hidden md:flex flex-col">
+<span class="font-label text-[10px] text-secondary/40 uppercase tracking-tighter">Destination</span>
+<span class="font-headline text-sm font-bold text-on-surface uppercase tracking-tight">Flight Training #04</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="px-2 py-0.5 rounded-sm bg-dawn/10 border border-dawn/20">
+<span class="font-label text-[9px] font-bold text-dawn uppercase tracking-widest">Landed Successfully</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-dawn transition-colors cursor-pointer">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Visualization Map Section -->
+<section class="mt-12 mb-12 relative overflow-hidden h-48 rounded-lg bg-surface-container-lowest flex items-center justify-center">
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, #4B3F72 1px, transparent 0); background-size: 24px 24px;"></div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-screen" data-alt="abstract tech circuit pattern overlaid on dark purple background with subtle glowing data points and flight paths" data-location="Global Networks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEjxS_XZM15CPsoeena66AVrxRQfCe5j5cWMfNqyHtp6gA2zgm2q_CmqKS4j3uDqLH6tYz1GkZEvGqLCm28KiE-48nFB0UDfF9n0ruEeX8aWF1dybQO58n6wnKZPhHq-7RaeZpcPp-g014wTiQW_eKRwkW8w30Wr9GnibM3jJu6dNjoH_U1mqFFre3hbYqhc4Fj977LpH3Qq9i1ipuxxyWoXM7umBEMQRdRycg_00jnAacTpGRJaGsHL2XwnFehCggEI6UjVAoDh5_"/>
+<div class="relative z-10 text-center">
+<span class="material-symbols-outlined text-dawn text-4xl mb-2">public</span>
+<p class="font-label text-[10px] uppercase tracking-[0.3em] text-on-surface">Global Flight Path Map</p>
+<p class="font-label text-[8px] uppercase text-outline mt-1 tracking-tighter">Encrypted Connection Established</p>
+</div>
+<div class="absolute bottom-4 right-4 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-dawn animate-pulse"></span>
+<span class="font-label text-[9px] uppercase tracking-widest text-dawn">Live Sync</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-[#120f17] dark:bg-[#120f17] border-t border-twilight/20">
+<div class="flex flex-col items-center justify-center text-secondary opacity-50 hover:text-dawn hover:opacity-100 transition-all active:scale-90 duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<div class="flex flex-col items-center justify-center text-dawn scale-110 drop-shadow-[0_0_8px_rgba(255,140,66,0.4)] transition-all active:scale-90 duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary opacity-50 hover:text-dawn hover:opacity-100 transition-all active:scale-90 duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary opacity-50 hover:text-dawn hover:opacity-100 transition-all active:scale-90 duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+</div>
+</nav>
+</body></html>
